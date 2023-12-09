@@ -8,9 +8,18 @@ export interface Stock {
     openPrice: number; 
 }
 
-export interface AlphaVantageData {
-    "Meta Data": Record<string, string>,
-    "Time Series (Daily)": {[key : string] : string},
-    "Weekly Time Series": {[key : string] : string},
-    "Monthly Time Series": {[key : string] : string}
+export interface AlphaVantageRawData {
+    "Meta Data": Record<string, string>
+    "Time Series (Daily)": AlphaVantageStockItem
+    "Weekly Time Series": AlphaVantageStockItem
+    "Monthly Time Series": AlphaVantageStockItem
+}
+
+interface AlphaVantageStockItem {
+    [key : string] : string
+    "1. open": string
+    "2. high": string
+    "3. low": string
+    "4. close": string
+    "5. volume": string
 }

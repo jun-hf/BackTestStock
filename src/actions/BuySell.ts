@@ -1,10 +1,16 @@
-import axios from 'axios'; 
 import type {
     Stock,
     TimeSeries,
-    AlphaVantageData,
     AlphaVantageTimeSeriesKey
 } from '../models/BuySell'
+
+interface BuySellRequirement {
+    symbol: string
+    timeSeries: string
+    buyRate: number 
+    sellRate: number
+    amount: number
+}
 
 class BuySell{
     stockList: Stock[];
@@ -15,7 +21,7 @@ class BuySell{
     buyRate: number;
     sellRate: number;
 
-    constructor(symbol: string, timeSeries: string, buyRate: number, sellRate: number, amount: number) {
+    constructor({symbol, timeSeries, buyRate, sellRate, amount}: BuySellRequirement) {
         this.stockList = [];
         this.netWorth = [amount];
         this.symbol = symbol;

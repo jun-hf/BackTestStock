@@ -20,8 +20,7 @@ export const buildStockList = (rawData: AlphaVantageRawData): Stock[] => {
     const stockList: Stock[] = [];
 
     Object.keys(timeSeriesObj).forEach(entry => {
-        // ts-ignore
-        const openPrice = timeSeriesObj[entry]['1. open'];
+        const openPrice = timeSeriesObj[entry]['1. open' as any];
         const date = new Date(entry);
         const stock: Stock = {
             timeSeries: timeSeries.toUpperCase() as TimeSeries,
@@ -32,6 +31,16 @@ export const buildStockList = (rawData: AlphaVantageRawData): Stock[] => {
         stockList.push(stock)
     }) 
     return stockList;
+};
+
+export const getStockList = async (symbol: string = 'IBM', timeSeries: string = 'DAILY'): Promise<Stock[] | []> => {
+    try {
+        const stock = await getStock(symbol, timeSeries);
+        return buildStockList(stock.data);
+    } catch (err) {
+        console.error(`Failed at getStockList: Cannot build stock list for ${timeSeries} - ${symbol}`);
+    }
+    return []
 };
 
 export const _parseTimeSeriesKey = (timeSeries: string): string => {
