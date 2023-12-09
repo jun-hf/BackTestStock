@@ -7,6 +7,11 @@ app.get('/', (req, res) => {
     res.send('Hello');
 });
 
+app.get('/status', (req, res) => {
+    res.json({ "status": "up" });
+});
+
 app.listen(PORT, () => {
-    console.log(`Listening at port:${PORT}`)
-})
+    console.log(`Listening at port:${PORT}`);
+});
+
