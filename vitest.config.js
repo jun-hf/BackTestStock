@@ -1,5 +1,3 @@
-import test from 'node:test'
-
 const { configDefaults, defineConfig } = require('vitest/config')
 
 export default defineConfig({

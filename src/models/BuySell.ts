@@ -23,3 +23,11 @@ interface AlphaVantageStockItem {
     "4. close": string
     "5. volume": string
 }
+
+export interface BuySellRequirement {
+    symbol: string
+    timeSeries: string
+    buyRate: number 
+    sellRate: number
+    amount: number
+}
