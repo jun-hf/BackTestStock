@@ -31,6 +31,7 @@ export class BuySell{
             console.log(`SUCCESS: in calculating buySellStrategy for ${this.symbol} and ${this.symbol}`);
         } catch (error) {
             console.error(`ERROR: Unable to calculate buySellStrategy`);
+            throw error
         };
     };
 
@@ -84,10 +85,3 @@ export class BuySell{
 export const getLastValue = (arr: number[]): number=> {
     return arr[arr.length - 1];
 }
-
-;( async () => {
-    const buySell1 = new BuySell({symbol: 'IBM', timeSeries: 'DAILY', buyRate: 0.001, sellRate: 0.0001, amount: 1000});
-    await buySell1.init();
-    console.log(buySell1.getNetWorth());
-    console.log(buySell1.getSharesList());
-})();
