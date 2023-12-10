@@ -1,0 +1,73 @@
+{
+    "data": {
+        "Meta Data": {
+            "1. Information": "Daily Time Series with Splits and Dividend Events",
+            "2. Symbol": "IBM",
+            "3. Last Refreshed": "2023-12-08",
+            "4. Output Size": "Compact",
+            "5. Time Zone": "US/Eastern"
+        },
+        "Time Series (Daily)": {
+            "2023-12-08": {
+                "1. open": "160.0",
+                "2. high": "162.04",
+                "3. low": "160.0",
+                "4. close": "161.96",
+                "5. adjusted close": "161.96",
+                "6. volume": "4561342",
+                "7. dividend amount": "0.0000",
+                "8. split coefficient": "1.0"
+            },
+            "2023-12-07": {
+                "1. open": "161.0",
+                "2. high": "161.465",
+                "3. low": "159.97",
+                "4. close": "160.22",
+                "5. adjusted close": "160.22",
+                "6. volume": "3665498",
+                "7. dividend amount": "0.0000",
+                "8. split coefficient": "1.0"
+            },
+            "2023-12-06": {
+                "1. open": "161.59",
+                "2. high": "162.355",
+                "3. low": "160.01",
+                "4. close": "160.28",
+                "5. adjusted close": "160.28",
+                "6. volume": "3356432",
+                "7. dividend amount": "0.0000",
+                "8. split coefficient": "1.0"
+            },
+            "2023-12-05": {
+                "1. open": "160.76",
+                "2. high": "162.47",
+                "3. low": "160.72",
+                "4. close": "161.39",
+                "5. adjusted close": "161.39",
+                "6. volume": "4556668",
+                "7. dividend amount": "0.0000",
+                "8. split coefficient": "1.0"
+            },
+            "2023-12-04": {
+                "1. open": "160.29",
+                "2. high": "162.79",
+                "3. low": "160.29",
+                "4. close": "161.1",
+                "5. adjusted close": "161.1",
+                "6. volume": "5779017",
+                "7. dividend amount": "0.0000",
+                "8. split coefficient": "1.0"
+            },
+            "2023-12-01": {
+                "1. open": "158.41",
+                "2. high": "160.59",
+                "3. low": "158.0",
+                "4. close": "160.55",
+                "5. adjusted close": "160.55",
+                "6. volume": "4871860",
+                "7. dividend amount": "0.0000",
+                "8. split coefficient": "1.0"
+            }
+        }
+    }
+}
