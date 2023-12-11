@@ -1,6 +1,6 @@
 import {
     BuySell
-} from '../../src/actions/BuySell';
+} from '../../src/strategy/BuySell';
 import { expect, beforeAll, describe, it, vi, afterEach, afterAll} from 'vitest';
 import * as getSharesList from '../../src/lib/getStockList';
 import dailyStockList from '../fixture/dailyStockList';

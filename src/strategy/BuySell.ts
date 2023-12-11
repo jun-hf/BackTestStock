@@ -84,4 +84,4 @@ export class BuySell{
 
 export const getLastValue = (arr: number[]): number=> {
     return arr[arr.length - 1];
-}
+};
