@@ -47,6 +47,7 @@ describe('::getStockList', () => {
         expect(spy).toHaveBeenCalledWith(expectedUrl);
     });
     it(':builStockList -> should construct the correct stock list', async () => {
+        // @ts-ignore
         const result = await buildStockList(IBMDaily.data);
         expect(result).toStrictEqual(expectedStockList);
     });

@@ -32,7 +32,7 @@ describe('::BuySell', () => {
         });
         it('should able to calculate stock', async () => {
             const spy = vi.spyOn(getSharesList, 'getStockList');
-            // @ts-ignore
+            // @ts-expect-error // returning a test stock
             spy.mockImplementation(async () => { return dailyStockList });
             await buySell.init();
         });
