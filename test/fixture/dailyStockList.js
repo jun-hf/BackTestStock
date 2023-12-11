@@ -1,7 +1,7 @@
 const stockInfo = {
     timeSeries: 'DAILY',
     symbol: 'IBM',
-}
+};
 module.exports = [
     {
         ...stockInfo,
@@ -33,4 +33,4 @@ module.exports = [
         date: new Date("2023-12-01"),
         openPrice: Number("158.41")
     }
-]
+];

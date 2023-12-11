@@ -6,7 +6,7 @@ import {
 } from '../../src/lib/getStockList';
 import axios from 'axios';
 import IBMDaily from '../fixture/IBMDaily.json';
-import expectedStockList from '../fixture/expectedStockList';
+import expectedStockList from '../fixture/dailyStockList';
 
 import { expect, beforeAll, describe, it, vi, afterEach} from 'vitest';
 
@@ -24,6 +24,9 @@ describe('::getStockList', () => {
         vi.resetAllMocks();
     });
     describe(':getStockList', () => {
+        afterEach(() => {
+            const errorMock = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+        });
         afterEach(() => {
             vi.resetAllMocks();
         });
@@ -44,6 +47,7 @@ describe('::getStockList', () => {
         expect(spy).toHaveBeenCalledWith(expectedUrl);
     });
     it(':builStockList -> should construct the correct stock list', async () => {
+        // @ts-ignore
         const result = await buildStockList(IBMDaily.data);
         expect(result).toStrictEqual(expectedStockList);
     });
