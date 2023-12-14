@@ -1,7 +1,9 @@
-import Express from 'express';
+import express from 'express';
 import { BuySell } from './strategy/BuySell';  
 const PORT = 8000;
-const app = Express();
+const app = express();
+
+app.use(express.json());
 
 app.get('/', (req, res) => {
     console.log('Gett');
@@ -9,6 +11,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/buySell', async (req, res) => {
+    const buySellInput = req.body;
     req.json({ 'Message': 'Created strategy' });
 });
 
