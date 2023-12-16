@@ -1,5 +1,5 @@
 # BackTestStock
-1. You can calculate your p/l for your stocks
+1. You can calculate your p/l for your stocks.
 
 ## TODO
 1. Create the api for buySell strategy 
