@@ -11,8 +11,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/buySell', async (req, res) => {
-    const buySellInput = req.body;
-    req.json({ 'Message': 'Created strategy' });
+    res.json({ 'Message': 'Created strategy' });
 });
 
 app.get('/status', (req, res) => {
