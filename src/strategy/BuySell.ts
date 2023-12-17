@@ -2,7 +2,7 @@ import { getStockList } from '../lib/getStockList';
 import type {
     Stock,
     BuySellRequirement
-} from '../models/BuySell'
+} from './BuySellType'
 
 export class BuySell{
     stockList: Stock[];
