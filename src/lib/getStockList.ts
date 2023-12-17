@@ -4,7 +4,7 @@ import {
     Stock,
     AlphaVantageTimeSeriesKey,
     TimeSeries
-} from '../strategy/BuySellType';
+} from '../types/BuySellType';
 
 export const getStock = async (symbol: string, timeSeries: string) => {
     symbol = 'IBM';

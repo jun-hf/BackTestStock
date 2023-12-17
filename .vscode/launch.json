@@ -5,6 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "command": "npm run dev",
+            "name": "Run npm dev",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+        {
             "command": "npx ts-node ${workspaceFolder}/src/lib/jsonValidator.ts",
             "name": "Run npm server",
             "request": "launch",
