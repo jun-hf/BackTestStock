@@ -1,8 +1,6 @@
 import express from 'express';
-import { BuySell } from './strategy/BuySell';  
+import { jsonValidator } from './lib/jsonValitator'; 
 import type { JsonSchema } from "./types/utilType";
-import { Validator } from "express-json-validator-middleware";
-const validate = new Validator({});
 const PORT = 8000;
 const app = express();
 
@@ -21,7 +19,7 @@ const BuySellSchema: JsonSchema = {
     required: ['timeSeries']
 };
 
-app.post('/buySell', validate({ body: BuySellSchema}), async (req, res) => {
+app.post('/buySell', jsonValidator(BuySellSchema), async (req, res) => {
     res.json({ 'Message': 'Created strategy' });
 });
 
