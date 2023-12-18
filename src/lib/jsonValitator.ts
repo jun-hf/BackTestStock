@@ -1,6 +1,6 @@
 import Ajv from 'ajv';
 import type { Request, Response, NextFunction } from 'express';
-import { JsonSchema } from '../types/utilType'
+import { JsonSchema } from '../types/utilType';
 
 const ajv = new Ajv();
 
@@ -12,7 +12,7 @@ export const jsonValidator = (inputSchema: JsonSchema) => {
         if (!valid) {
             if (validate.errors) {
                 const errorMessage = validate.errors[0].message;
-                console.error(errorMessage)
+                console.error(errorMessage);
                 return res.status(400).send(errorMessage);
             };
         };
