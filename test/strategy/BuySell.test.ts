@@ -10,7 +10,7 @@ const timeSeries = 'Daily';
 const buyRate = 0.001;
 const sellRate = 0.001;
 const amount = 1000;
-const buySellInput = {symbol, timeSeries, buyRate, sellRate, amount}
+const buySellInput = {symbol, timeSeries, buyRate, sellRate, amount};
 
 describe('::BuySell', () => {
     let buySell;
@@ -33,12 +33,12 @@ describe('::BuySell', () => {
         it('should able to calculate stock', async () => {
             const spy = vi.spyOn(getSharesList, 'getStockList');
             // @ts-expect-error // returning a test stock
-            spy.mockImplementation(async () => { return dailyStockList });
+            spy.mockImplementation(async () => { return dailyStockList; });
             await buySell.init();
         });
         it('should throw an error when unable to getStockList', async () => {
             const spy = vi.spyOn(getSharesList, 'getStockList');
-            spy.mockImplementation(async () => { return [] });
+            spy.mockImplementation(async () => { return []; });
             const errorMock = vi.spyOn(console, 'error').mockImplementation(() => undefined);
             await expect(buySell.init()).rejects.toThrow('Cannot build stock');
             expect(errorMock).toBeCalledWith('ERROR: Unable to calculate buySellStrategy');

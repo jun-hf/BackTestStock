@@ -2,7 +2,7 @@ import { getStockList } from '../lib/getStockList';
 import type {
     Stock,
     BuySellRequirement
-} from '../types/BuySellType'
+} from '../types/BuySellType';
 
 export class BuySell{
     stockList: Stock[];
@@ -31,7 +31,7 @@ export class BuySell{
             console.log(`SUCCESS: in calculating buySellStrategy for ${this.symbol} and ${this.symbol}`);
         } catch (error) {
             console.error(`ERROR: Unable to calculate buySellStrategy`);
-            throw error
+            throw error;
         };
     };
 
