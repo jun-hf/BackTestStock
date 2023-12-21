@@ -27,9 +27,6 @@ describe('::getStockList', () => {
         afterEach(() => {
             const errorMock = vi.spyOn(console, 'error').mockImplementation(() => undefined);
         });
-        afterEach(() => {
-            vi.resetAllMocks();
-        });
         it('should build correct stock list', async () => {
             const result = await getStockList(symbol, timeSeries);
             expect(result).toStrictEqual(expectedStockList);
