@@ -1,5 +1,5 @@
 import express from 'express';
-import { jsonValidator } from './lib/jsonValitator'; 
+import { jsonValidator } from './lib/jsonValidator'; 
 import type { JsonSchema } from "./types/utilType";
 const PORT = 8000;
 const app = express();
@@ -14,7 +14,7 @@ const BuySellSchema: JsonSchema = {
     type: 'object',
     properties: {
         timeSeries: { type: 'string' },
-        symbol: { type: 'boolean' }
+        symbol: { type: 'string' }
     },
     required: ['timeSeries']
 };
