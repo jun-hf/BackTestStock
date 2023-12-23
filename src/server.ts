@@ -1,22 +1,26 @@
 import express from 'express';
-import { BuySell } from './strategy/BuySell';  
+import { jsonValidator } from './lib/jsonValidator'; 
+import type { JsonSchema } from "./types/utilType";
 const PORT = 8000;
 const app = express();
 
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    console.log('Gett');
-    res.send('Hello');
-});
-
-app.post('/buySell', async (req, res) => {
-    const buySellInput = req.body;
-    req.json({ 'Message': 'Created strategy' });
-});
-
-app.get('/status', (req, res) => {
     res.json({ "status": "up" });
+});
+
+const BuySellSchema: JsonSchema = {
+    type: 'object',
+    properties: {
+        timeSeries: { type: 'string' },
+        symbol: { type: 'string' }
+    },
+    required: ['timeSeries']
+};
+
+app.post('/buySell', jsonValidator(BuySellSchema), async (req, res) => {
+    res.json({ 'Message': 'Created strategy' });
 });
 
 app.listen(PORT, () => {

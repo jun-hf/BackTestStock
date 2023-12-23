@@ -4,7 +4,7 @@ import {
     Stock,
     AlphaVantageTimeSeriesKey,
     TimeSeries
-} from '../models/BuySell';
+} from '../types/BuySellType';
 
 export const getStock = async (symbol: string, timeSeries: string) => {
     symbol = 'IBM';
@@ -27,9 +27,9 @@ export const buildStockList = (rawData: AlphaVantageRawData): Stock[] => {
             openPrice: Number(openPrice),
             symbol,
             date
-        }
-        stockList.push(stock)
-    }) 
+        };
+        stockList.push(stock);
+    }); 
     return stockList;
 };
 
@@ -40,10 +40,10 @@ export const getStockList = async (symbol: string = 'IBM', timeSeries: string = 
     } catch (err) {
         console.error(`Failed at getStockList: Cannot build stock list for ${timeSeries} - ${symbol}`);
     }
-    return []
+    return [];
 };
 
 export const _parseTimeSeriesKey = (timeSeries: string): string => {
     if (timeSeries === 'Daily') return `Time Series (${timeSeries})`;
     return `${timeSeries} Time Series`;
-}
+};

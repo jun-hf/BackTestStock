@@ -27,20 +27,17 @@ describe('::getStockList', () => {
         afterEach(() => {
             const errorMock = vi.spyOn(console, 'error').mockImplementation(() => undefined);
         });
-        afterEach(() => {
-            vi.resetAllMocks();
-        });
         it('should build correct stock list', async () => {
             const result = await getStockList(symbol, timeSeries);
             expect(result).toStrictEqual(expectedStockList);
-        })
+        });
         it('should return [], when failed to build stock', async () => {
             const mock = vi.fn().mockImplementation(getStock);
-            mock.mockImplementationOnce(() => {throw new Error()});
+            mock.mockImplementationOnce(() => {throw new Error();});
             const result = await getStockList('INVALID', 'INVALIDSYMBOL');
             expect(result).toStrictEqual([]);
         });
-    })
+    });
     it(':getStock -> request the correct url to AlphaVantage', async () => {
         const expectedUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_${timeSeries}&symbol=${symbol}&apikey=demo`;
         await getStock(symbol, timeSeries);
@@ -60,4 +57,4 @@ describe('::getStockList', () => {
         expect(daily).toBe(expectedDaily);
         expect(monthly).toBe(expectedMonthly);
     });
-})
+});
