@@ -1,21 +1,13 @@
-import './App.css'
-
-
-import { Card, Text, Metric } from "@tremor/react";
-
-const Bar = () => (
-  <Card className="max-w-xs mx-auto">
-    <Text>Sales</Text>
-    <Metric>$ 34,743</Metric>
-  </Card>
-);
+import './App.css';
+import BuySellForm from './BuySellForm';
+import { Title } from "@tremor/react";
 
 function App() {
   return (
-    <>
-      <h1></h1>
-      <Bar />
-    </>
+    <main className="p-4 md:p-10 mx-auto max-w-7xl">
+      <Title>Backtest Stock</Title>
+      <BuySellForm />
+    </main>
   )
 }
 
