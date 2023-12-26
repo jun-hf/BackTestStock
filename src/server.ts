@@ -10,7 +10,7 @@ dotnev.config();
 const PORT = 8000;
 const app = express();
 
-app.use(express.static(path.join(process.cwd(), 'frontend', 'dist')))
+app.use(express.static(path.join(process.cwd(), 'frontend', 'dist')));
 app.use(express.json());
 app.use((err: Error, req: Request, res: Response, next: NextFunction): void => {
   console.error(err.stack);

@@ -25,7 +25,7 @@ describe('::getStockList', () => {
     });
     describe(':getStockList', () => {
         afterEach(() => {
-            const errorMock = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+            vi.spyOn(console, 'error').mockImplementation(() => undefined);
         });
         it('should build correct stock list', async () => {
             const result = await getStockList(symbol, timeSeries);
@@ -39,12 +39,13 @@ describe('::getStockList', () => {
         });
     });
     it(':getStock -> request the correct url to AlphaVantage', async () => {
-        const expectedUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_${timeSeries}&symbol=${symbol}&apikey=demo`;
+        process.env.API_KEY = 'TEST';
+        const expectedUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=TEST`;
+        
         await getStock(symbol, timeSeries);
         expect(spy).toHaveBeenCalledWith(expectedUrl);
     });
     it(':builStockList -> should construct the correct stock list', async () => {
-        // @ts-ignore
         const result = await buildStockList(IBMDaily.data);
         expect(result).toStrictEqual(expectedStockList);
     });
