@@ -12,3 +12,7 @@
 2. Fully tested for all features 
 3. TypeScript first 
 
+## POST 
+```
+curl -X POST -d '{"timeSeries": "DAILY", "symbol": "IBM","buyRate": 0.001, "sellRate": 0.0008, "amount": 1000}' -H "Content-Type: application/json" localhost:8000/buySell
+```
