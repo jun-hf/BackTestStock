@@ -7,9 +7,9 @@ import {
 } from '../types/BuySellType';
 
 export const getStock = async (symbol: string, timeSeries: string) => {
-    symbol = 'IBM';
-    const url =`https://www.alphavantage.co/query?function=TIME_SERIES_${timeSeries}&symbol=${symbol}&apikey=demo`;
-    return axios.get(url); // using the alphavatage demo api
+    const API_KEY = process.env.API_KEY;
+    const url =`https://www.alphavantage.co/query?function=TIME_SERIES_${timeSeries}&symbol=${symbol}&apikey=${API_KEY}`;
+    return axios.get(url); 
 };
 
 export const buildStockList = (rawData: AlphaVantageRawData): Stock[] => {
@@ -33,7 +33,7 @@ export const buildStockList = (rawData: AlphaVantageRawData): Stock[] => {
     return stockList;
 };
 
-export const getStockList = async (symbol: string = 'IBM', timeSeries: string = 'DAILY'): Promise<Stock[] | []> => {
+export const getStockList = async (symbol: string = 'IBM', timeSeries: string = 'DAILY'): Promise<Stock[]> => {
     try {
         const stock = await getStock(symbol, timeSeries);
         return buildStockList(stock.data);

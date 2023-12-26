@@ -80,6 +80,9 @@ export class BuySell{
     getSharesList(): number[] {
         return this.sharesList;
     };
+    getStockList(): Stock[] {
+        return this.stockList;
+    } 
 };
 
 export const getLastValue = (arr: number[]): number=> {
