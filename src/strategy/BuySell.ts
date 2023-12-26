@@ -28,7 +28,7 @@ export class BuySell{
             this.stockList = await getStockList(this.symbol, this.timeSeries);
             if (this.stockList.length === 0) throw new Error('Cannot build stock');
             this._calculateStrategy();
-            console.log(`SUCCESS: in calculating buySellStrategy for ${this.symbol} and ${this.symbol}`);
+            console.log(`SUCCESS: in calculating buySellStrategy for ${this.symbol} and ${this.timeSeries}`);
         } catch (error) {
             console.error(`ERROR: Unable to calculate buySellStrategy`);
             throw error;

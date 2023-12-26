@@ -1,13 +1,16 @@
 import express, { type Request, type Response , type NextFunction} from 'express';
+import path from 'node:path';
 import { BuySell } from './strategy/BuySell';
 import { jsonValidator } from './lib/jsonValidator'; 
 import type { JsonSchema } from "./types/utilType";
-import * as dotnev from 'dotenv';
 
+import * as dotnev from 'dotenv';
 dotnev.config();
+
 const PORT = 8000;
 const app = express();
 
+app.use(express.static(path.join(process.cwd(), 'frontend', 'dist')))
 app.use(express.json());
 app.use((err: Error, req: Request, res: Response, next: NextFunction): void => {
   console.error(err.stack);
@@ -15,7 +18,7 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction): void => {
 });
 
 app.get('/', (req: Request, res: Response) => {
-    res.json({ "status": "up" });
+    res.sendFile(path.join(process.cwd(), 'frontend', 'dist', 'index.html'));
 });
 
 const BuySellSchema: JsonSchema = {

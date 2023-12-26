@@ -8,7 +8,7 @@
     "lint": "npx eslint . && echo 'Style checked 😄'",
     "test": "npm run lint && vitest run",
     "coverage": "vitest run --coverage",
-    "build:frontend": "cd frontend && npm run build",
+    "build:frontend": "cd frontend && npm run build && cd ..",
     "start": "tsc && node dist/server",
     "production": "npm run build:frontend && npm run start"
   },
