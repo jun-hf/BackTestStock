@@ -1,5 +1,5 @@
 
-import { Card, NumberInput, Button, Select, SelectItem} from "@tremor/react";
+import { Card, NumberInput, Button, Select, SelectItem, Legend, Text } from "@tremor/react";
 import React, { useReducer } from 'react';
 
 interface FromState {
@@ -51,6 +51,7 @@ const BuySellForm = () => {
     <Card className="max-w-lg mx-auto">
       <form onSubmit={handleSubmit}>
         <BuySellSelect 
+          textName="Symbol:"
           dispatcher={dispatch} 
           formData={formState}
           selectItems={[
@@ -60,6 +61,7 @@ const BuySellForm = () => {
           placeholder='Select your stock'
         />
         <BuySellSelect 
+          textName="Time Series:"
           dispatcher={dispatch} 
           formData={formState}
           selectItems={[
@@ -70,24 +72,39 @@ const BuySellForm = () => {
           selectName= 'timeSeries' 
           placeholder='Select your time period'
         />
+        <Text className="text-left mb-1">Amount:</Text>
         <NumberInput 
+          className="my-2"
           placeholder="Enter amount to invest" 
           name= 'amount'
           onChange={handleFormChange}
+          min={0}
         />
-        <NumberInput 
-          placeholder="Enter rate to buy (Insert 0.1 = buy stock when price increase 10% from last period)" 
-          enableStepper={true} 
-          name="buyRate"
-          onChange={handleFormChange}
-        />
-        <NumberInput 
-          placeholder="Enter rate to sell (Insert 0.1 = sell stock when price drops 10% from last period)" 
-          enableStepper={true} 
-          name="sellRate"
-          onChange={handleFormChange}
-        />
-        <Button type="submit" size='lg'>Calculate profit</Button>
+        <div className="my-2">
+          <Text className="text-left pb-1">Buy Rate:</Text>
+            <NumberInput 
+              placeholder="Enter rate to sell" 
+              enableStepper={true} 
+              name="buyRate"
+              onChange={handleFormChange}
+              min={0}
+            />
+            <Legend colors={["green"]} categories={["Insert 0.1 = buy stock when price increase 10% from last period"]}/>
+        </div>
+        <div className="my-2">
+          <Text className="text-left pb-1">Sell Rate:</Text>
+          <NumberInput 
+            placeholder="Enter rate to sell" 
+            enableStepper={true} 
+            name="sellRate"
+            onChange={handleFormChange}
+            min={0}
+          />
+          <Legend colors={["red"]} categories={["Insert 0.05 = sell stock when price drops 5% from last period"]}/>
+        </div>
+        <div className='flex items-center justify-center'>
+          <Button className='bg-blue-500 text-white px-4 py-2 rounded' type="submit" size='lg'>Calculate profit</Button>
+        </div>
       </form>
     </Card>
   );
@@ -103,8 +120,9 @@ interface SelectProps<AllowedSelect> {
   selectName: AllowedSelect;
   placeholder: string;
   formData: FromState;
+  textName: string;
 };
-const BuySellSelect = ({ dispatcher, formData, selectItems, selectName, placeholder}: SelectProps<'timeSeries' | 'symbol'>) => {
+const BuySellSelect = ({ dispatcher, formData, selectItems, selectName, placeholder, textName}: SelectProps<'timeSeries' | 'symbol'>) => {
   const handleFormChange = (value: string) => {
     dispatcher({
       type: 'HANDLE FORM INPUT',
@@ -114,7 +132,8 @@ const BuySellSelect = ({ dispatcher, formData, selectItems, selectName, placehol
   };
   return (
     <>
-      <Select placeholder={placeholder} value={formData[selectName]} onValueChange={handleFormChange}>
+      <Text className="text-left mb-1">{textName}</Text>
+      <Select className="my-2" placeholder={placeholder} value={formData[selectName]} onValueChange={handleFormChange}>
         {selectItems.map((item, key)=> { 
           return <SelectItem key={key} value={item.itemValue}>{item.displayValue}</SelectItem>;
         })}

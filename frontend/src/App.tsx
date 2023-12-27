@@ -1,6 +1,5 @@
 import './App.css';
 import BuySellForm from './BuySellForm';
-import DashboardExample from './DashBoard';
 import { Title } from "@tremor/react";
 
 function App() {
