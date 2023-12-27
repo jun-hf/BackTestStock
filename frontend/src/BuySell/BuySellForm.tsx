@@ -1,17 +1,12 @@
 
-import { Card, NumberInput, Button, Select, SelectItem, Legend, Text } from "@tremor/react";
+import { Card, NumberInput, Button, Legend, Text } from "@tremor/react";
 import React, { useReducer } from 'react';
-
-interface FromState {
-  timeSeries: string;
-  symbol: string;
-  amount: number;
-  buyRate: number;
-  sellRate: number;
-};
-
-type FormAction = { type: "HANDLE FORM INPUT", field: string, payload: string | number };
-type FormEventHandler<T> = (event: T) => void;
+import BuySellSelect from "./BuySellSelect";
+import {
+  FromState,
+  FormAction,
+  FormEventHandler,
+} from './BuySellFormType';
 
 const formReducer = (state: FromState, action: FormAction) => {
   switch (action.type) {
@@ -107,38 +102,6 @@ const BuySellForm = () => {
         </div>
       </form>
     </Card>
-  );
-};
-
-interface SelectItem {
-  itemValue: string;
-  displayValue: string;
-};
-interface SelectProps<AllowedSelect> {
-  dispatcher: React.Dispatch<FormAction>;
-  selectItems: SelectItem[];
-  selectName: AllowedSelect;
-  placeholder: string;
-  formData: FromState;
-  textName: string;
-};
-const BuySellSelect = ({ dispatcher, formData, selectItems, selectName, placeholder, textName}: SelectProps<'timeSeries' | 'symbol'>) => {
-  const handleFormChange = (value: string) => {
-    dispatcher({
-      type: 'HANDLE FORM INPUT',
-      field: selectName,
-      payload: value
-    });
-  };
-  return (
-    <>
-      <Text className="text-left mb-1">{textName}</Text>
-      <Select className="my-2" placeholder={placeholder} value={formData[selectName]} onValueChange={handleFormChange}>
-        {selectItems.map((item, key)=> { 
-          return <SelectItem key={key} value={item.itemValue}>{item.displayValue}</SelectItem>;
-        })}
-      </Select>
-    </>
   );
 };
 

@@ -1,5 +1,5 @@
 import './App.css';
-import BuySellForm from './BuySellForm';
+import BuySellForm from './BuySell/BuySellForm';
 import { Title } from "@tremor/react";
 
 function App() {
