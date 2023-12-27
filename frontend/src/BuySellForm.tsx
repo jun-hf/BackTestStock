@@ -48,7 +48,7 @@ const BuySellForm = () => {
     console.log(formState);
   };
   return (
-    <Card className="max-w-xs mx-auto">
+    <Card className="max-w-lg mx-auto">
       <form onSubmit={handleSubmit}>
         <BuySellSelect 
           dispatcher={dispatch} 
@@ -76,13 +76,13 @@ const BuySellForm = () => {
           onChange={handleFormChange}
         />
         <NumberInput 
-          placeholder="Enter rate to buy (0.1 buy stock if price increase 10% from last period)" 
+          placeholder="Enter rate to buy (Insert 0.1 = buy stock when price increase 10% from last period)" 
           enableStepper={true} 
           name="buyRate"
           onChange={handleFormChange}
         />
         <NumberInput 
-          placeholder="Enter rate to sell (0.1 sell stock if price drops 10% from last period)" 
+          placeholder="Enter rate to sell (Insert 0.1 = sell stock when price drops 10% from last period)" 
           enableStepper={true} 
           name="sellRate"
           onChange={handleFormChange}
