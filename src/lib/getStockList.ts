@@ -16,7 +16,8 @@ export const buildStockList = (rawData: AlphaVantageRawData): Stock[] => {
     const symbol: string = rawData['Meta Data']['2. Symbol'];
     const timeSeries: string = rawData['Meta Data']['1. Information'].split(' ')[0];
     const keyTimeSeries: string = _parseTimeSeriesKey(timeSeries);
-    const timeSeriesObj = rawData[keyTimeSeries as AlphaVantageTimeSeriesKey];
+    // @ts-ignore TODO FIX THIS IN FUTURE
+    const timeSeriesObj = rawData[keyTimeSeries];
     const stockList: Stock[] = [];
 
     Object.keys(timeSeriesObj).forEach(entry => {
