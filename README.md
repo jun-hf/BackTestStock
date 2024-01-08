@@ -38,6 +38,19 @@ npm run test
 
 ## POST 
 - Calculate your strategy
+```yaml
+url: localhost:8000/buySell
+method: POST
+headers:
+    content-type: application/json
+data:
+    timeSeries: "DAILY" | "WEEKLY" | "MONTHLY"
+    symbol: "IBM"
+    buyRate: number
+    sellRate: number
+    amount: number
+```
+- curl example
 ```
 curl -X POST -d '{"timeSeries": "DAILY", "symbol": "IBM","buyRate": 0.001, "sellRate": 0.0008, "amount": 1000}' -H "Content-Type: application/json" localhost:8000/buySell
 ```
