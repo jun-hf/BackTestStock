@@ -12,7 +12,7 @@
 </div>
      
 ## BackTestStock
-1. You can calculate your stock profit and loss of the stock.
+1. You can calculate your stock profit and loss.
 
 ## Getted Started
 - Clone this repo
