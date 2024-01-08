@@ -31,6 +31,11 @@ API_KEY=<api token from alpha vantage>
 npm start
 ```
 
+## Run test
+```
+npm run test
+```
+
 ## POST 
 - Calculate your strategy
 ```
