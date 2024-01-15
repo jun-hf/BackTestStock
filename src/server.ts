@@ -2,8 +2,8 @@ import express, { type Request, type Response , type NextFunction} from 'express
 import path from 'node:path';
 import { BuySell } from './strategy/BuySell';
 import { jsonValidator } from './lib/jsonValidator'; 
-import type { JsonSchema } from "./types/utilType";
 
+import type { JsonSchema } from "./types/utilType";
 import * as dotnev from 'dotenv';
 dotnev.config();
 
